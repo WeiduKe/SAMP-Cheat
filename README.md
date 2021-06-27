@@ -1,5 +1,6 @@
 # SAMP-Cheat-Rvanka
-Ver: 0.3.7R1
+Ver: 1.1:  重新构造了全屏目标代码
+
 
 # Description
 非常暴力的R人, 在载具中输入/kck, 按R激活.
