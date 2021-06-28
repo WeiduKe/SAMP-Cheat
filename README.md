@@ -1,5 +1,5 @@
 # SAMP-Cheat-Rvanka
-Ver: 1.1:  重新构造了全屏目标代码
+Ver: 1.1   重新构造了全屏目标代码  增加误操作判断
 
 
 # Description
