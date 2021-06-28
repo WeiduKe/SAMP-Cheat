@@ -50,7 +50,9 @@ function events.onSendVehicleSync(data)
     if switch then
         for id = 0, sampGetMaxPlayerId(true) do
             if sampIsPlayerConnected(id) then
-                local result, ped = sampGetCharHandleBySampPlayerId(id)
+                local X, Y, Z = getCharCoordinates(PLAYER_PED) --- 获取玩家坐标 @PLAYER_PED
+                local result, ped = findAllRandomCharsInSphere(X, Y, Z, 10000, true, false)
+                local result, show = sampGetPlayerIdByCharHandle(ped)
                 if result then
                     if not sampIsChatInputActive() and not sampIsDialogActive() and not sampIsScoreboardOpen() then --- 防止误操作
                         if isKeyDown(0x52) then
