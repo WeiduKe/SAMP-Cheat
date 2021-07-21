@@ -48,7 +48,7 @@ end
 --- @data
 function events.onSendVehicleSync(data)
     if switch then
-        local X, Y, Z = getCharCoordinates(PLAYER_PED) --- 获取玩家坐标 @PLAYER_PED
+        local X, Y, Z = getCharCoordinates(PLAYER_PED) --- @PLAYER_PED
         local result, ped = findAllRandomCharsInSphere(X, Y, Z, 10000, true, false)
         local result, show = sampGetPlayerIdByCharHandle(ped)
         if result then
