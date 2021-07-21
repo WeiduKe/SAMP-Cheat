@@ -48,26 +48,21 @@ end
 --- @data
 function events.onSendVehicleSync(data)
     if switch then
-        for id = 0, sampGetMaxPlayerId(true) do
-            if sampIsPlayerConnected(id) then
-                local X, Y, Z = getCharCoordinates(PLAYER_PED) --- 获取玩家坐标 @PLAYER_PED
-                local result, ped = findAllRandomCharsInSphere(X, Y, Z, 10000, true, false)
-                local result, show = sampGetPlayerIdByCharHandle(ped)
-                if result then
-                    if not sampIsChatInputActive() and not sampIsDialogActive() and not sampIsScoreboardOpen() then --- 防止误操作
-                        if isKeyDown(0x52) then
-                            --- R
-                            local maths = getCharHeading(ped)
-                            tX, tY, tZ = getCharCoordinates(ped)
-                            data.position.x = tX + 2
-                            data.position.y = tY - 0.5
-                            data.position.z = tZ
-                            data.quaternion[7] = math.random(-100, 100) --- 7-- 7
-                            data.quaternion[-1] = math.random(-100, 100) --- Bug R人同时 对方会听到你的汽车鸣笛 自己不会有任何听觉效果
-                            data.moveSpeed.y = math.random(-100, 100) * math.cos(-math.rad(maths))
-                            printStringNow('~Y~Rvanka All~B~By Weidu ~R~~>~[ID: ' .. id .. ']~<~', 1000)
-                        end
-                    end
+        local X, Y, Z = getCharCoordinates(PLAYER_PED) --- 获取玩家坐标 @PLAYER_PED
+        local result, ped = findAllRandomCharsInSphere(X, Y, Z, 10000, true, false)
+        local result, show = sampGetPlayerIdByCharHandle(ped)
+        if result then
+            if not sampIsChatInputActive() and not sampIsDialogActive() and not sampIsScoreboardOpen() then --- 防止误操作
+                if isKeyDown(0x52) then --- R
+                    local maths = getCharHeading(ped)
+                    tX, tY, tZ = getCharCoordinates(ped)
+                    data.position.x = tX + 2
+                    data.position.y = tY - 0.5
+                    data.position.z = tZ
+                    data.quaternion[7] = math.random(-100, 100) --- 7-- 7
+                    data.quaternion[-1] = math.random(-100, 100) --- Bug R人同时 对方会听到你的汽车鸣笛 自己不会有任何听觉效果
+                    data.moveSpeed.y = math.random(-100, 100) * math.cos(-math.rad(maths))
+                    printStringNow('~Y~Rvanka All~B~By Weidu ~R~~>~[ID: ' .. id .. ']~<~', 1000)
                 end
             end
         end
